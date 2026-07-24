@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Saint Tropez Chaffar — Carte</title>
+<meta name="description" content="Saint Tropez Chaffar — café, plats et cocktails face à la mer. Sfax, Tunisie.">
+
+<!-- Fonts: Fredoka for the beach-club wordmarks, Kalam for handwritten menu voice, Jost for clean UI/prices -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Kalam:wght@400;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+<!-- ===================== TOP UTILITY BAR ===================== -->
+<div class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__contact" href="tel:+21620513513">📞 +216 58 880 899</a>
+    <span class="topbar__address">📍 Based in Chaffar Mahres Sfax</span>
+    <div class="topbar__controls">
+      <button id="musicToggle" class="iconbtn" aria-pressed="false" title="Ambiance sonore">🔇</button>
+      <button id="themeToggle" class="iconbtn" aria-pressed="false" title="Mode sombre">🌙</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== STICKY NAV ===================== -->
+<header class="nav" id="mainNav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__brand">
+      <img src="assets/logo.jpg" alt="Saint Tropez Chaffar" class="nav__logo">
+      <span class="nav__brand-text">Saint&nbsp;Tropez<em>Chaffar</em></span>
+    </a>
+
+    <button class="nav__search-btn iconbtn" id="searchToggle" aria-label="Rechercher">🔍</button>
+
+    <nav class="nav__pills" id="navPills" aria-label="Catégories">
+      <!-- populated by JS from MENU_DATA groups -->
+    </nav>
+
+    <button class="nav__burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Chercher un plat, une boisson…" autocomplete="off">
+    <button id="searchClose" class="iconbtn" aria-label="Fermer la recherche">✕</button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <div class="hero__waves hero__waves--top" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <img src="assets/logo.jpg" alt="Emblème Saint Tropez Chaffar — flamant rose et vagues" class="hero__emblem">
+    <p class="hero__eyebrow">Bienvenue à</p>
+    <h1 class="hero__title">Saint&nbsp;Tropez <span>Chaffar</span></h1>
+    <p class="hero__tagline">Entre mer, soleil et gourmandise, vivez une parenthèse de détente et de plaisir.
+      Nous vous souhaitons un agréable moment parmi nous.</p>
+    <a href="#menu-start" class="hero__cta">Découvrir la carte <span aria-hidden="true">↓</span></a>
+  </div>
+
+  <div class="hero__waves hero__waves--bottom" aria-hidden="true"></div>
+</section>
+
+<!-- ===================== MENU ===================== -->
+<main id="menu-start">
+  <div class="empty-state" id="emptyState" hidden>
+    <p>Aucun article ne correspond à votre recherche 🌊</p>
+  </div>
+  <div id="menuGroups"><!-- populated entirely by JS from MENU_DATA --></div>
+</main>
+
+<!-- ===================== QR / VISIT US ===================== -->
+<section class="visit">
+  <div class="visit__wave" aria-hidden="true"></div>
+  <div class="visit__inner">
+    <div class="visit__text">
+      <h2>Retrouvez-nous</h2>
+      <p>Based in Chaffar Mahres Sfax</p>
+      <p><a href="tel:+21658880899">+216 58 880 899</a></p>
+      <p class="visit__hint">Scannez pour retrouver cette carte sur votre téléphone</p>
+    </div>
+    <div class="visit__qr" id="qrHolder" aria-label="QR code de la carte"></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer__wave" aria-hidden="true"></div>
+  <p class="footer__brand">Saint&nbsp;Tropez <em>Chaffar</em></p>
+  <p class="footer__tag">Café · Plage · Cuisine méditerranéenne</p>
+  <p class="footer__copy">© <span id="year"></span> Saint Tropez Chaffar — Sfax, Tunisie</p>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Retour en haut">↑</button>
+
+<!-- Optional ambient audio — muted by default. Restaurant owner: drop an mp3 at assets/ambience.mp3 to enable. -->
+<audio id="ambientAudio" src="assets/ambience.mp3" loop preload="none"></audio>
+
+<!-- Lightweight client-side QR generator, used only for the "visit us" card -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
